@@ -101,7 +101,7 @@ func (s *MemoryStore) GetAll() map[string]*sessions.UserData {
 	defer s.lock.Unlock()
 
 	// Make safe copies of all our structures.
-	var result map[string]*sessions.UserData
+	var result map[string]*sessions.UserData = make(map[string]*sessions.UserData)
 	for k, v := range s.users {
 		result[k] = cloneUser(v)
 	}
